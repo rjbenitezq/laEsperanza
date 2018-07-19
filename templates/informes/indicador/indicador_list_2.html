@@ -1,0 +1,26 @@
+{% for indicador in indicador %}
+<tr>
+    <td class="text-center">{{ indicador.id }}</td>
+    <td class="text-center">{{ indicador.indicadorCod }}</td>
+    <td class="text-center">{{ indicador.indicadorDescripcion }}</td>
+    <td class="text-center">{{ indicador.indicadorTipo }}</td>
+    <td class="text-center">
+        <button class="btn btn-warning show-form-update"
+                data-url="{% url 'aplicaciones:indicador_update' indicador.id %}">
+            <span class="glyphicon glyphicon-pencil"></span>
+            Edit
+        </button>
+    </td>
+    <td class="text-center">
+        <button class="btn btn-danger show-form-delete"
+                data-url="{% url 'aplicaciones:indicador_delete' indicador.id %}">
+            <span class="glyphicon glyphicon-trash"></span>
+            Delete
+        </button>
+    </td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="7" class="text-center bg-warning">No existen Indicadores</td>
+</tr>
+{% endfor %}

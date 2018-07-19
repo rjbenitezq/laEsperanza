@@ -1,0 +1,15 @@
+{% for informe in informe %}
+<tr>
+    <td class="text-center">{{ informe.id }}</td>
+    <td class="text-center">{{ informe.informeFecha }}</td>
+    <td class="text-center">{{ informe.informeAsunto }}</td>
+    <td class="text-center">{{ informe.tipoinforme }}</td>
+    <td class="text-center">{{ informe.personal }}</td>
+    <td class="text-center">{{ informe.turno }}</td>
+    <td class="text-center">{{ informe.vehiculo }}</td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="7" class="text-center bg-warning">No existen Actividades</td>
+</tr>
+{% endfor %}

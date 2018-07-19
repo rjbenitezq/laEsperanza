@@ -1,0 +1,179 @@
+<script>
+    $(function () {
+        $('#fecha').datepicker({
+            autoclose: true
+        });
+    });
+</script>
+{% csrf_token %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-body">
+                <!-- Date -->
+                {% block content %}
+                <form method="post" id="formulario" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label>Apellidos y Nombres</label>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control" placeholder="Apellidos" id="apellidos"
+                                       name="apellidos">
+                            </div>
+                            <div class="col-xs-6">
+                                <input type="text" class="form-control" placeholder="Nombres" id="nombres">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-xs-2 control-label">Dni</label>
+                        <div class="input-group col-xs-10">
+                            <input type="text" class="form-control" placeholder="DNI" id="dni">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Domicilio</label>
+                        <div class="input-group col-md-12">
+                            <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                            <input type="text" class="form-control" placeholder="Domicilio" id="domicilio">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Telefono</label>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Fijo" id="telefono">
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-mobile"></i>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Celular" id="celular">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Correo Electrónico</label>
+                        <div class="input-group col-md-12">
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            <input type="email" class="form-control" placeholder="Email" id="email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label row">Fecha de Nacimiento</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control" id="fecha" data-inputmask="'alias': 'dd/mm/yyyy'"
+                                   data-mask="" id="fechanac">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label row">Cargo</label>
+                        <select class="form-group form-control col-xs-8 select2" style="width: 60%;" id="cargo">
+                            {% if cargo %}
+                            {% for cargoo in cargo %}
+                            {% for cargooo in cargoo%}
+                            <option value="{{cargo.id}}">{{cargooo.cargoDescripcion}}</option>
+                            {% endfor %}
+                            {% endfor %}
+                            {% else %}
+                            <option value="">No hay data</option>
+                            {% endif %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label row">Turno</label>
+                        <select class="form-group form-control col-xs-8 select2" style="width: 60%;" id="turno">
+                            {% if turno %}
+                            {% for turnoo in turno %}
+                            {% for turnooo in turnoo%}
+                            <option value="{{turno.id}}">{{turnooo.turnoDescripcion}}</option>
+                            {% endfor %}
+                            {% endfor %}
+                            {% else %}
+                            <option value="">No hay data</option>
+                            {% endif %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label row">Estado</label>
+                        <label class="control-label col-xs-4">
+                            <input type="radio" name="r3" class="flat-red" checked (change)="handleChange($event)">
+                            Activo
+                        </label>
+                        <label class="control-label col-xs-4">
+                            <input type="radio" name="r3" class="flat-red" (change)="handleChangee($event)">
+                            Inactivo
+                        </label>
+                    </div>
+
+                        <div style="text-align: center;">
+                            <button align="center" class="btn btn-success" type="submit">Registrar</button>
+                        </div>
+
+                </form>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block js %}
+<script type="text/javascript">
+    $("#formulario").on("submit", function (e) {
+        e.preventDefault();
+        var trome = $("#formulario").serialize() + "&csrfmiddlewaretoken=" + '{{ csrf_token }}';
+
+        $.ajax({
+            url: "PersonalCreate",
+            type: "POST",
+            dataType: "HTML",
+            data: trome,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (echo) {
+                $('#contenidotable').val('');
+                $('#contenidotable').html(echo);
+            },
+        });
+    });
+</script>
+<script>
+    function handleChange(evt) {
+        var target = evt.target;
+        if (target.checked) {
+            console.log(target.checked);
+            return estado = "A";
+        }
+    }
+
+    function handleChangee(evt) {
+        var target = evt.target;
+        if (target.checked) {
+            console.log(target.checked);
+            return estado = "I";
+        }
+    }
+</script>
+{% endblock js %}

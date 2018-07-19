@@ -1,0 +1,28 @@
+{% extends 'reportes/actividades/base.html' %}
+
+{% block content %}
+<h1 class="page-header">Actividades de Informes</h1>
+<table class="display nowrap dataTable" style="width:100%" id="book-table">
+    <thead>
+    <tr>
+        <td class="text-center">#</td>
+        <td class="text-center">Fecha</td>
+        <td class="text-center">Asunto</td>
+        <td class="text-center">Tipo Informe</td>
+        <td class="text-center">Personal</td>
+        <td class="text-center">Turno</td>
+        <td class="text-center">Vehiculo</td>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% include "reportes/actividades/actividad_list_2.html" %}
+    </tbody>
+</table>
+
+<div class="modal fade" id="modal-book">
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
+</div>
+{% endblock %}

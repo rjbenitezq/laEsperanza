@@ -1,0 +1,38 @@
+<ul class="sidebar-menu">
+        <li class="header">Opciones de Navegación</li>
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Principal</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+        </li>
+        {% for opcion in personal.opcion.filter %}
+          {% if opcion.opcionRecurso == '#' %}
+            <li class="treeview">
+              <a href="#" data-target="{{ opcion.opcionDescripcion }}" onclick="">
+                <i class="{{ opcion.opcionIcono }}"></i>
+                <span>{{ opcion.opcionDescripcion }}</span>
+                <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </span>
+              </a>
+              <ul class="treeview-menu" id="{{ opcion.opcionDescripcion }}">
+              {% with opcion.id as minuta %}
+                {% for opcion in personal.opcion.all %}
+                  {% if opcion.NOPDependencia == minuta %}
+                  <li>
+                    <a href="#" onclick="{{ opcion.opcionRecurso }}">
+                      <i class="{{ opcion.opcionIcono }}"></i>{{ opcion.opcionDescripcion }}
+                    </a>
+                  </li>
+                  {% endif %}
+                {% endfor %}
+              {% endwith %}
+              </ul>
+            </li>
+          {% endif %}
+        {% endfor %}
+</ul>

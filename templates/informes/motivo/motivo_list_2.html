@@ -1,0 +1,26 @@
+{% for motivo in motivo %}
+<tr>
+    <td class="text-center">{{ motivo.id }}</td>
+    <td class="text-center">{{ motivo.motivoCod }}</td>
+    <td class="text-center">{{ motivo.motivoDescripcion }}</td>
+    <td class="text-center">{{ motivo.motivoTipo }}</td>
+    <td class="text-center">
+        <button class="btn btn-warning show-form-update"
+                data-url="{% url 'aplicaciones:motivo_update' motivo.id %}">
+            <span class="glyphicon glyphicon-pencil"></span>
+            Edit
+        </button>
+    </td>
+    <td class="text-center">
+        <button class="btn btn-danger show-form-delete"
+                data-url="{% url 'aplicaciones:motivo_delete' motivo.id %}">
+            <span class="glyphicon glyphicon-trash"></span>
+            Delete
+        </button>
+    </td>
+</tr>
+{% empty %}
+<tr>
+    <td colspan="7" class="text-center bg-warning">No existen motivoes</td>
+</tr>
+{% endfor %}

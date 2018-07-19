@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-body">
+                <!-- Date -->
+                {% block content %}
+                <form method="post" id="formulario" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label class="col-xs-4 control-label">Nombre Cargo</label>
+                        <div class="input-group col-xs-8">
+                            <input type="text" class="form-control" placeholder="Cargo" id="nomcargo" autocomplete="off">
+                        </div>
+                    </div>
+
+                        <div style="text-align: center;">
+                            <button align="center" class="btn btn-success" type="submit">Registrar</button>
+                        </div>
+
+                </form>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+{% extends 'reportes/incidencias/base.html' %}
+
+{% block content %}
+<h1 class="page-header">Lista de Incidencias</h1>
+<table class="display nowrap dataTable" style="width:100%" id="book-table">
+    <thead>
+    <tr>
+        <th class="text-center">#</th>
+        <th class="text-center">Codigo</th>
+        <th class="text-center">Descripción</th>
+        <th class="text-center">Traslado</th>
+        <th class="text-center">Masculino</th>
+        <th class="text-center">Femenino</th>
+        <th class="text-center">Heridos</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% include "reportes/incidencias/incidencia_list_2.html" %}
+    </tbody>
+</table>
+{% endblock %}

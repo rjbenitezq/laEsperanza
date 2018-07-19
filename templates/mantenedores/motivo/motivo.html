@@ -1,0 +1,47 @@
+<div class="row">
+        <div class="col-md-12">
+             <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Motivo</h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="table-responsive">
+                <table class="table no-margin">
+                  <thead>
+                  <tr>
+                    <th>Codigo</th>
+                    <th>Descripcion</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% if object_list %}
+                  {% for cargo in object_list %}
+                  <tr>
+                    <td><a href="pages/examples/invoice.html">{{ cargo.cargoCod }}</a></td>
+                    <td>{{ cargo.cargoDescripcion }}</td>
+                  </tr>
+                  {% endfor %}
+                  {% else %}
+                  <h1>No hay datos que mostrar ... </h1>
+                  {% endif %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <button type="button" onClick="contratosCreate();">Agregar Nuevo</button>
+              <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">Vista por Codigo</a>
+            </div>
+            <!-- /.box-footer -->
+          </div>
+        </div>
+</div>

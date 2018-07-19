@@ -1,0 +1,28 @@
+{% extends 'informes/motivo/base.html' %}
+{% block content %}
+<h1 class="page-header">Motivos</h1>
+<button class="btn btn-primary show-form" data-url="{% url 'aplicaciones:motivo_create' %}">
+    <span class="glyphicon glyphicon-plus"></span>
+    Nuevo Motivo
+</button>
+<table class="table" id="book-table">
+    <thead>
+    <tr>
+        <th class="text-center">#</th>
+        <th class="text-center">Codigo</th>
+        <th class="text-center">Descripción</th>
+        <th class="text-center">Tipo</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% include "informes/motivo/motivo_list_2.html" %}
+    </tbody>
+</table>
+
+<div class="modal fade" id="modal-book">
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
+</div>
+{% endblock %}

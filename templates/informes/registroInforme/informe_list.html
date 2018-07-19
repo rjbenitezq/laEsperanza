@@ -1,0 +1,33 @@
+{% extends 'informes/registroInforme/base.html' %}
+
+{% block content %}
+<h1 class="page-header">Informe</h1>
+<button class="btn btn-primary show-form" data-url="{% url 'aplicaciones:informe_create' %}">
+    <span class="glyphicon glyphicon-plus"></span>
+    Nuevo Informe
+</button>
+<table class="table" id="book-table">
+    <thead>
+    <tr>
+        <th class="text-center">#</th>
+        <th class="text-center">Codigo</th>
+        <th class="text-center">Fecha</th>
+        <th class="text-center">Asunto</th>
+        <th class="text-center">Tipo</th>
+        <th class="text-center">Turno</th>
+        <th class="text-center">Patrullaje</th>
+        <th class="text-center">Vehiculo</th>
+        <th class="text-center">comisaria</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% include "informes/registroInforme/informe_list_2.html" %}
+    </tbody>
+</table>
+
+<div class="modal fade" id="modal-book">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content"></div>
+    </div>
+</div>
+{% endblock %}

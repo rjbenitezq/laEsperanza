@@ -1,0 +1,16 @@
+{% for incidencia in incidencia %}
+<tr>
+    <td class="text-center">{{ incidencia.id }}</td>
+    <td class="text-center">{{ incidencia.incidenciaCod }}</td>
+    <td class="text-center">{{ incidencia.incidenciaDescripcion }}</td>
+    <td class="text-center">{{ incidencia.incidenciaTraslado }}</td>
+    <td class="text-center">{{ incidencia.incidenciaMasculino }}</td>
+    <td class="text-center">{{ incidencia.incidenciaFemenino }}</td>
+    <td class="text-center">{{ incidencia.incidenciaHeridos }}</td>
+
+</tr>
+{% empty %}
+<tr>
+    <td colspan="7" class="text-center bg-warning">No existen Incidencias</td>
+</tr>
+{% endfor %}
